@@ -1235,6 +1235,9 @@ int piBoardRev (void)
   char *c ;
   static int  boardRev = -1 ;
 
+ /* Bad hack */
+  return BPRVER;
+
 /*add for BananaPro by LeMaker team*/
   if(isA20())
   {
