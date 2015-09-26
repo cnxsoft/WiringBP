@@ -143,16 +143,16 @@ static int moduleLoaded (char *modName)
     fprintf (stderr, "gpio: Unable to check modules: %s\n", strerror (errno)) ;
     exit (1) ;
   }
-  /*add for BananaPro by LeMaker team*/
-	if(strncmp (modName, "spi-sun7i", len) == 0)
+  /* Modified for Orange Pi */
+	if(strncmp (modName, "spi-sunxi", len) == 0)
 	{
-		modName="spi_sun7i";
+		modName="spi_sunxi";
 	}
 	if(strncmp (modName, "i2c-sunxi", len) == 0)
 	{
 		modName="i2c_sunxi";
 	}
-  /*end 2014.08.19*/
+  /* end */
 	
   while (fgets (line, 80, fd) != NULL)
   {
@@ -199,7 +199,7 @@ static void doLoad (int argc, char *argv [])
 	  /**/ if (strcasecmp (argv [2], "spi") == 0)
 	  {
 	    module1 = "spidev" ;
-	    module2 = "spi-sun7i" ;
+	    module2 = "spi-sunxi" ;
 	    file1  = "/dev/spidev0.0" ;
 	    file2  = "/dev/spidev0.1" ;
 	    if (argc == 4)
@@ -286,7 +286,7 @@ static void doLoad (int argc, char *argv [])
 		    exit (1) ;
 		  }
 	}
-	/*end 2014.08.19*/
+	/*end */
   sleep (1) ;	// To let things get settled
 
   changeOwner (argv [0], file1) ;
@@ -1285,7 +1285,7 @@ int main (int argc, char *argv [])
     }
     else
     {
-      printf ("Banana Pro Details:\n") ;
+      printf ("OrangeB Pi Details:\n") ;
       printf ("  Type: %s, Revision: %s, Memory: %dMB, Maker: %s %s\n", 
 	  piModelNames [model], piRevisionNames [rev], mem, piMakerNames [maker], overVolted ? "[OV]" : "") ;
     }
